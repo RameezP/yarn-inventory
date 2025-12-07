@@ -7,6 +7,10 @@ import Materials from "./pages/Materials";
 import Inventory from "./pages/Inventory";
 import Transactions from "./pages/Transactions";
 import Users from "./pages/Users";
+
+console.log("Frontend API URL =", process.env.REACT_APP_API_URL);
+
+
 import Navbar from "./components/Navbar";
 import "./App.css";
 

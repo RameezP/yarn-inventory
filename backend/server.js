@@ -5,9 +5,10 @@ const fs = require("fs");
 const path = require("path");
 require("dotenv").config();
 
-// ✅ Correct Sequelize import (models/index.js exports sequelize)
-const sequelize = require("./config/db");
+const mysql = require("mysql2/promise");
 
+// ✅ Correct Sequelize import
+const sequelize = require("./config/db");
 
 // Routes
 const authRoutes = require("./routes/authRoutes");
@@ -27,12 +28,14 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// ---- CORS (Production + Local) ----
-app.use(cors({
-  origin: process.env.CORS_ORIGIN || "*",
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
+// ---- CORS ----
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN || "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+  })
+);
 
 app.use(express.json());
 
@@ -49,22 +52,37 @@ app.get("/", (req, res) => {
   res.json({ message: "Yarn Inventory API is LIVE 🔥" });
 });
 
-// ---- TEMPORARY IMPORT ROUTE ----
+// ---- TEMP ROUTE: DB IMPORT ----
 app.get("/import-db", async (req, res) => {
   try {
     const filePath = path.join(__dirname, "dump.sql");
+
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).send("dump.sql not found");
+    }
+
     const sql = fs.readFileSync(filePath, "utf8");
 
-    await sequelize.query(sql, { raw: true, multipleStatements: true });
+    const conn = await mysql.createConnection({
+      host: process.env.DB_HOST,
+      port: Number(process.env.DB_PORT) || 3306,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      database: process.env.DB_NAME,
+      multipleStatements: true
+    });
 
-    res.send("Database import complete!");
+    await conn.query(sql);
+    await conn.end();
+
+    return res.send("Database import complete!");
   } catch (err) {
     console.error("IMPORT ERROR:", err);
-    res.status(500).send(err.message);
+    return res.status(500).send("Import failed: " + err.message);
   }
 });
 
-// ---- SERVER START ----
+// ---- START SERVER ----
 const PORT = process.env.PORT || 5000;
 
 (async () => {
@@ -72,12 +90,11 @@ const PORT = process.env.PORT || 5000;
     await sequelize.authenticate();
     console.log("✅ Connected to MySQL via Sequelize");
 
-    await sequelize.sync({ alter: false }); // don't auto modify in production
+    await sequelize.sync({ alter: false });
 
     app.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);
     });
-
   } catch (err) {
     console.error("❌ Sequelize Connection Error:", err);
   }

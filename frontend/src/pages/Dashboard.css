@@ -1,0 +1,19 @@
+.card {
+  border-radius: 12px;
+}
+
+.card h4 {
+  margin-bottom: 15px;
+}
+
+.chart-container {
+  height: 300px;
+}
+
+table {
+  font-size: 15px;
+}
+
+table th {
+  background: #f8f9fa;
+}

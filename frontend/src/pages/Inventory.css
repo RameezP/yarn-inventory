@@ -1,0 +1,52 @@
+.inv-card {
+  border-radius: 12px;
+  background: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.inv-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 6px 14px rgba(0,0,0,0.12);
+}
+
+.stock-value {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.unit {
+  font-size: 16px;
+  opacity: 0.6;
+}
+
+/* Slide Modal */
+/* New Code */
+.slide-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 350px;
+  height: 100vh;
+  background: white;
+  box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+  padding: 25px;
+  animation: slideIn 0.3s ease forwards;
+  
+  /* FIX: Must be higher than Bootstrap backdrop (1050) */
+  z-index: 2000; 
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.modal-content-box {
+  margin-top: 50px;
+}
+
+.material-name {
+  font-weight: 500;
+  opacity: 0.8;
+}

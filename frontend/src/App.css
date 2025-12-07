@@ -1,0 +1,126 @@
+/* --- GLOBAL THEME VARIABLES --- */
+:root {
+  --primary-color: #2c3e50;  /* Deep Navy */
+  --secondary-color: #34495e; /* Lighter Navy */
+  --accent-color: #1abc9c;    /* Teal/Green */
+  --danger-color: #e74c3c;
+  --bg-light: #f4f6f9;        /* Light Grey Background */
+  --text-dark: #2c3e50;
+  --white: #ffffff;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  background-color: var(--bg-light);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-dark);
+}
+
+/* --- LAYOUT --- */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 70px; /* Changed from 250px to 70px (Icon width) */
+  padding: 30px;
+  transition: all 0.3s;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+  /* width: 250px;  <-- REMOVE THIS LINE */
+  background: var(--primary-color);
+  color: white;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 15px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden; /* Important: Hides text when collapsed */
+  white-space: nowrap; /* Prevents text wrapping */
+}
+
+.sidebar-brand {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--accent-color);
+  letter-spacing: 1px;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px; /* Adjusted padding */
+  color: #b0c4de;
+  text-decoration: none;
+  font-size: 16px;
+  transition: 0.3s;
+  border-left: 4px solid transparent;
+  cursor: pointer;
+}
+
+.sidebar-link:hover, .sidebar-link.active {
+  background: var(--secondary-color);
+  color: white;
+  border-left: 4px solid var(--accent-color);
+}
+
+.sidebar-icon {
+  min-width: 25px; /* Ensures icon stays same size */
+  font-size: 22px;
+  margin-right: 20px; /* Space between icon and text */
+}
+
+.logout-btn {
+  margin-top: auto; /* Push to bottom */
+  margin-bottom: 20px;
+  background: none;
+  border: none;
+  color: #e74c3c;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  padding-left: 25px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* --- CARDS --- */
+.custom-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  border: none;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s;
+}
+
+.custom-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-icon-bg {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 15px;
+}

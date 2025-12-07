@@ -6,7 +6,8 @@ const path = require("path");
 require("dotenv").config();
 
 // ✅ Correct Sequelize import (models/index.js exports sequelize)
-const sequelize = require("./models");  
+const sequelize = require("./config/db");
+
 
 // Routes
 const authRoutes = require("./routes/authRoutes");

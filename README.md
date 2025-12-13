@@ -1,4 +1,4 @@
-#                           🧶 YARN-INVENTORY  
+#                          <p align = "center"> 🧶 YARN-INVENTORY  </p>
 ### Transform Inventory • Empower Growth • Drive Innovation
 
 <p align="center">
@@ -80,7 +80,9 @@ yarn-inventory/
 ## 🛠️ Prerequisites
 
 Node.js (v18+ recommended)
+
 npm
+
 MySQL
 
 ## ⚙️ Installation
@@ -89,8 +91,8 @@ Follow these steps to run the project locally.
 
 1️⃣ Clone the Repository
 
-git clone https://github.com/RameezP/yarn-inventory
-
+git clone 
+https://github.com/RameezP/yarn-inventory
 cd yarn-inventory
 
 2️⃣ Backend Setup
@@ -108,6 +110,8 @@ Backend
 cd backend
 npm run dev
 
+```
+```
 Frontend
 cd frontend
 npm start

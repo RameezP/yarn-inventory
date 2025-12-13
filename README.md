@@ -75,3 +75,48 @@ yarn-inventory/
 │   └── package.json
 │
 └── README.md
+```
+
+## 🛠️ Prerequisites
+
+Node.js (v18+ recommended)
+npm
+MySQL
+
+## ⚙️ Installation
+
+Follow these steps to run the project locally.
+
+1️⃣ Clone the Repository
+
+git clone https://github.com/RameezP/yarn-inventory
+cd yarn-inventory
+
+2️⃣ Backend Setup
+
+cd backend
+npm install
+
+## .env file
+
+PORT=5000
+DB_NAME=yarn_inventory
+DB_USER=root
+DB_PASSWORD=yourpassword
+DB_HOST=localhost
+JWT_SECRET=supersecretkey
+
+3️⃣ Frontend Setup
+cd ../frontend
+npm install
+
+▶️ Running the Project
+
+Backend
+cd backend
+npm run dev
+
+Frontend
+cd frontend
+npm start
+

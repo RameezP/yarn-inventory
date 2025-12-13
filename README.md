@@ -92,16 +92,21 @@ Follow these steps to run the project locally.
 1️⃣ Clone the Repository
 
 git clone 
+
 https://github.com/RameezP/yarn-inventory
+
 cd yarn-inventory
 
 2️⃣ Backend Setup
 
 cd backend
+
 npm install
 
 3️⃣ Frontend Setup
+
 cd ../frontend
+
 npm install
 
 ▶️ Running the Project
